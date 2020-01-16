@@ -23,7 +23,7 @@ function toogleTheme()
 $(function() {
   $("li").on("click",function() {
 	  if(this.id=="dnt") {
-		  $("#dnt_txt").html("You can donate USD via PayPal mail: julioverne"+"@"+"icloud.com");
+		  $("#dnt_txt").html("You can donate USD via PayPal mail: d0ura"+"@"+"icloud.com");
 	  }
   });
 });
@@ -32,7 +32,7 @@ function loadPackageInfo() {
 	var form_url = urlSelfParts[0]+"packageInfo/"+urlSelfParts[1];
 	if (navigator.userAgent.search(/Cydia/) == -1) {
 		$("#showAddRepo_").show();
-		$("#open_cydia").attr("href","cydia://url/https://cydia.saurik.com/api/share#?source=https://julioverne.github.io/&package="+urlSelfParts[1]);
+		$("#open_cydia").attr("href","cydia://url/https://cydia.saurik.com/api/share#?source=https://d0ura.github.io/testing/&package="+urlSelfParts[1]);
 	}
 	$.ajax({
 		url: form_url,
@@ -78,7 +78,7 @@ function loadPackageInfo() {
 			if(decodeResp.open == true) {
 				$("#is_open_source_").show();
 			}
-			
+
         },
 		error: function (err) {
 			$("#errorInfo").html("Description unavailable for "+urlSelfParts[1]);
@@ -86,7 +86,7 @@ function loadPackageInfo() {
 	});
 }
 
-				
+
 var allPackages = null;
 var packagesSection = {};
 function openSection(sectionName)
@@ -98,16 +98,16 @@ function openSection(sectionName)
 		var urlOpen = "cydia://package/"+dicNow.package;
 		if (navigator.userAgent.search(/Cydia/) == -1) {
 			urlOpen = window.location.protocol+"//"+window.location.hostname+"/description.html?id="+dicNow.package;
-		}		
+		}
 		sectionContent +=  "<li class=\"has-icon\"><a href='"+urlOpen+"' target='_blank' role=\"button\"><img style=\"border-radius: 20%;\" href=\""+encodeURI(sectionName)+".png\" alt=\"\" srcset=\""+encodeURI(sectionName)+".png 2x, "+encodeURI(sectionName)+".png 3x\" class=\"icon\"/><label>"+dicNow.name+" v"+dicNow.version+"</label></a></li>";
 	}
-	
+
 	$("#browser").html(sectionContent);
 }
 function loadMainSection()
 {
 	var sectionContent = "";
-	for (var section in packagesSection) {		
+	for (var section in packagesSection) {
 		sectionContent += "<li class=\"has-icon\"><a onclick=\"openSection('"+section+"')\" role=\"button\"><img style=\"border-radius: 20%;\" href=\""+encodeURI(section)+".png\" alt=\"\" srcset=\""+encodeURI(section)+".png 2x, "+encodeURI(section)+".png 3x\" class=\"icon\"/><label>"+section+" ("+packagesSection[section].length+")</label></a></li>";
 	}
 	$("#browser").html(sectionContent);
@@ -147,7 +147,7 @@ function loadRecentUpdates()
 		var urlOpen = "cydia://package/"+allPackages[dicNow].package;
 		if (navigator.userAgent.search(/Cydia/) == -1) {
 			urlOpen = window.location.protocol+"//"+window.location.hostname+"/description.html?id="+allPackages[dicNow].package;
-		}				
+		}
 		htmlnews +=  "<li class=\"has-icon\"><a href='"+urlOpen+"' target='_blank' role=\"button\"><img style=\"border-radius: 20%;\" href=\""+encodeURI(allPackages[dicNow].section)+".png\" alt=\"\" srcset=\""+encodeURI(allPackages[dicNow].section)+".png 2x, "+encodeURI(allPackages[dicNow].section)+".png 3x\" class=\"icon\"/><label>"+allPackages[dicNow].name+" v"+allPackages[dicNow].version+"</label></a></li>";
 	}
 	$("#updates").html(htmlnews);
@@ -163,7 +163,7 @@ function loadPackages() {
 			allPackages = eval('('+returnhtml+')');
 			var htmlnews = "";
 			for (var dicNow in allPackages) {
-				
+
 				var section = allPackages[dicNow].section;
 				if(section==null) {
 					section = "Unknown";
@@ -177,11 +177,11 @@ function loadPackages() {
 			loadRecentUpdates();
 			$("#browser_").show();
 			$("#updates_").show();
-			
+
 			loadPackageDetail();
         },
 		error: function (err) {
-			$("#browser_").hide();	
+			$("#browser_").hide();
 			$("#updates_").hide();
 		}
 	});
